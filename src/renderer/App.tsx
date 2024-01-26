@@ -30,7 +30,11 @@ function Hello() {
             className="hover:scale-125 transition-all"
           />
         </a>
-        <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
+        <a
+          href="https://github.com/jianhuagao/electron-react-tailwindcss"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img
             width="60"
             alt="tailwindcss"
