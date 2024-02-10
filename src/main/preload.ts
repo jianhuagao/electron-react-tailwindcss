@@ -1,6 +1,11 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import {
+  BrowserWindow,
+  contextBridge,
+  ipcRenderer,
+  IpcRendererEvent,
+} from 'electron';
 
 export type Channels = 'ipc-example';
 
@@ -24,6 +29,18 @@ const electronHandler = {
   },
 };
 
+const osVersion = process.platform;
+
+const api = {
+  minimizeWindow: () => ipcRenderer.send('minimize-window'),
+  maximizeWindow: () => ipcRenderer.send('maximize-window'),
+  closeWindow: () => ipcRenderer.send('close-window'),
+};
+
 contextBridge.exposeInMainWorld('electron', electronHandler);
+contextBridge.exposeInMainWorld('osVersion', osVersion);
+contextBridge.exposeInMainWorld('api', api);
 
 export type ElectronHandler = typeof electronHandler;
+export type OsVersion = typeof osVersion;
+export type Api = typeof api;

@@ -73,6 +73,10 @@ const createWindow = async () => {
     show: false,
     width: 1024,
     height: 728,
+    minWidth: 896,
+    minHeight: 609,
+    // frame: false, //设置为无边框
+    titleBarStyle: 'hidden', //隐藏标题栏
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
