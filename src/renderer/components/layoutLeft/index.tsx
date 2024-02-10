@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { memo } from 'react';
 import LayoutMenu from '../layoutMenu';
-import tailwindcssIcon from '../../../../assets/tailwindcss.svg';
+import { ReactComponent as Logo } from '../../../../assets/tailwindcss.svg';
 
 export default memo(function LayoutLeft() {
   //获取操作系统
@@ -17,7 +17,7 @@ export default memo(function LayoutLeft() {
       {/* logo部分 */}
       <div className="py-3">
         <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-          <img width="160" alt="tailwindcss" src={tailwindcssIcon} />
+          <Logo className="w-[160px] text-black dark:text-white" />
         </a>
       </div>
       {/* 导航部分 */}
