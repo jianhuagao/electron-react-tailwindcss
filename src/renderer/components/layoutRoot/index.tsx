@@ -6,12 +6,12 @@ import { useTheme } from '../../configs/ThemeProvider';
 import clsx from 'clsx';
 
 export default memo(function LayoutRoot() {
-  const { theme } = useTheme();
+  const { isDark } = useTheme();
   // blurImg
   return (
     <div
       className={clsx(
-        theme !== 'dark' && 'blurImg',
+        isDark || 'blurImg',
         'h-screen relative from-[#42275a] select-none to-[#734b6d] dark:bg-gradient-to-r',
       )}
     >
