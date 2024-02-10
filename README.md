@@ -1,3 +1,5 @@
+<img src="./docs/images/page2.png" alt="page2"/>
+<img src="./docs/images/page1.png" alt="page1"/>
 ## Tech Stack
 jianhuagao/electron-react-tailwindcss is built on the following main stack:
 
@@ -18,7 +20,6 @@ jianhuagao/electron-react-tailwindcss is built on the following main stack:
 - <img width='25' height='25' src='https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png' alt='Tailwind CSS'/> [Tailwind CSS](https://tailwindcss.com) – Front-End Frameworks
 
 Full tech stack [here](/techstack.md)
-
 
 ## Install
 
