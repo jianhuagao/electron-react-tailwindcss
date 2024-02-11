@@ -12,7 +12,7 @@ export default memo(function LayoutRoot() {
     <div
       className={clsx(
         isDark || 'blurImg',
-        'h-screen relative from-[#42275a] select-none to-[#734b6d] dark:bg-gradient-to-r',
+        'h-screen relative from-[#424676] select-none to-[#9276A5] via-[#676896] dark:bg-gradient-to-br',
       )}
     >
       <TitleBar />

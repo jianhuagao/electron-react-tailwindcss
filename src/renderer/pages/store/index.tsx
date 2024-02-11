@@ -17,7 +17,7 @@ export const TabComp = memo(function TabComp() {
   return (
     <div className="w-full">
       <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/40 dark:bg-blue-900/20 p-1">
+        <Tab.List className="flex space-x-1 rounded-xl bg-[#EEEEEE] dark:bg-blue-900/20 p-1">
           {tabItems.map((itemName) => (
             <Tab
               key={itemName}
@@ -25,8 +25,8 @@ export const TabComp = memo(function TabComp() {
                 clsx(
                   'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
                   selected
-                    ? 'bg-white dark:bg-white/30 text-blue-700 dark:text-blue-300 shadow'
-                    : 'text-blue-100 hover:bg-white/[0.12] hover:text-white',
+                    ? 'bg-white dark:bg-white/30 text-blue-700/80 dark:text-blue-300 shadow'
+                    : 'dark:text-blue-100 text-[#3a4d5c] hover:bg-white/[0.12] dark:hover:text-white',
                 )
               }
             >

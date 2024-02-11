@@ -59,7 +59,7 @@ export default function Drawer({ trigger, title, icon }: DrawerProps) {
                 leaveFrom="opacity-100 translate-x-0"
                 leaveTo="opacity-0 translate-x-8"
               >
-                <Dialog.Panel className="w-full max-w-md absolute right-[18px] top-[20px] h-[calc(100vh_-_40px)] blurImg transform overflow-hidden rounded-lg bg-white/80 dark:bg-[#4d3c5d] backdrop-blur-xl p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md absolute right-[18px] top-[20px] h-[calc(100vh_-_40px)] blurImg transform overflow-hidden rounded-lg bg-white/80 dark:bg-[#32344f]/90 backdrop-blur-xl backdrop-saturate-200 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg flex items-center justify-between font-medium leading-6"
