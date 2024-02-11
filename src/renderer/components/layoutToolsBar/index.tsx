@@ -35,12 +35,13 @@ export default memo(function LayoutToolsBar() {
           trigger={
             <div className="group transition-all flex rounded-full cursor-pointer bg-gray-300/20 dark:bg-white/20 dark:hover:bg-white/10 gap-2 pl-[4px] pr-[10px] py-[4px] text-xs items-center">
               <img
-                src="http://oss.roosports.cn/sit/1390602441770274961/1/e6b0362140054b2585993dc62bcbc1ed.png"
+                // src="http://oss.roosports.cn/sit/1390602441770274961/1/e6b0362140054b2585993dc62bcbc1ed.png"
+                src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2771880/6954da9324550c493555d8ec48987e02c63488da.gif"
                 alt="avatar"
                 className="rounded-full"
                 width={24}
               />
-              Admin
+              从来不熬夜
               <DownIcon className="w-0 group-hover:w-3 transition-all duration-300" />
             </div>
           }

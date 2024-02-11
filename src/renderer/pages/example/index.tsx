@@ -7,8 +7,8 @@ import { ReactComponent as DarkIcon } from '../../../../assets/ui/moon.svg';
 export default memo(function Example() {
   return (
     <div className="grid grid-cols-12 gap-4 pt-4">
-      <div className="col-span-12 rounded-lg flex items-center justify-center h-72 dark:bg-white/20 bg-white/90">
-        Banners
+      <div className="col-span-12 rounded-lg flex items-center justify-center overflow-hidden h-72 dark:bg-white/20 bg-white/90">
+        <img src="https://picsum.photos/760/290" alt="" className="w-full" />
       </div>
       {[
         <SettingIcon className="w-5" />,

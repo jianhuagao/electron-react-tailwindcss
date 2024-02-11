@@ -3,6 +3,10 @@ import Home from '../pages/home';
 import Example from '../pages/example';
 import ErrorPage from '../pages/error';
 import LayoutRoot from '../components/layoutRoot';
+import Store from '../pages/store';
+import Community from '../pages/community';
+import Chat from '../pages/chat';
+import Powered from '../pages/powered';
 
 export const routerConfig = createMemoryRouter(
   [
@@ -13,17 +17,25 @@ export const routerConfig = createMemoryRouter(
       errorElement: <ErrorPage />,
       children: [
         {
-          path: '/home',
-          element: <Home />,
+          path: '/store',
+          element: <Store />,
         },
         {
-          path: '/example',
-          element: <Example />,
+          path: '/community',
+          element: <Community />,
+        },
+        {
+          path: '/chat',
+          element: <Chat />,
+        },
+        {
+          path: '/powered',
+          element: <Powered />,
         },
       ],
     },
   ],
   {
-    initialEntries: ['/home'],
+    initialEntries: ['/store'],
   },
 );
