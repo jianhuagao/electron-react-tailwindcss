@@ -1,5 +1,7 @@
 import { Popover as UiPopover, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { ReactComponent as SettingSvg } from '../../../../../assets/ui/setting-solid.svg';
+import { ReactComponent as DownSvg } from '../../../../../assets/ui/chevron-down.svg';
 
 interface PopoverProps {
   trigger?: React.ReactNode;
@@ -14,18 +16,46 @@ export default function Popover({ trigger }: PopoverProps) {
           <Transition
             as={Fragment}
             enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
+            enterFrom="translate-y-1"
             enterTo="opacity-100 translate-y-0"
             leave="transition ease-in duration-150"
             leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
+            leaveTo="translate-y-1"
           >
-            <UiPopover.Panel className="absolute left-1/2 z-10 mt-3 w-[200px] max-w-sm -translate-x-3/4 transform px-4 sm:px-0 lg:max-w-3xl">
-              <div className="overflow-hidden rounded-lg shadow-lg bg-white/60 dark:bg-white/10 backdrop-blur-xl p-5">
-                <p>profile</p>
-                <p>profile</p>
-                <p>profile</p>
-                <p>profile</p>
+            <UiPopover.Panel className="absolute left-1/2 z-10 mt-3 min-w-[200px] max-w-sm -translate-x-3/4 transform px-4 sm:px-0 lg:max-w-3xl">
+              <div className="overflow-hidden rounded-lg shadow-xl bg-white/80 dark:bg-white/20 backdrop-blur-xl">
+                <div className="flex flex-col divide-y text-sm divide-white/10 w-[260px]">
+                  <div className="flex items-center p-5">
+                    <img
+                      src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2771880/6954da9324550c493555d8ec48987e02c63488da.gif"
+                      alt="avatar"
+                      className="rounded-lg"
+                      width={60}
+                    />
+                    <div className="ml-2">
+                      <div className="flex items-center">
+                        从来不熬夜{' '}
+                        <DownSvg className="w-5 cursor-pointer ml-1" />
+                      </div>
+                      <p>在线</p>
+                    </div>
+                    <div className="ml-auto">
+                      <SettingSvg className="size-6 cursor-pointer" />
+                    </div>
+                  </div>
+                  <div className="p-2">
+                    <ul>
+                      {['退出登录', '在线好友'].map((item, index) => (
+                        <li
+                          key={index}
+                          className="rounded hover:bg-white/50 dark:hover:bg-white/20 p-2 cursor-pointer"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </UiPopover.Panel>
           </Transition>
