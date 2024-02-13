@@ -58,8 +58,8 @@ const Fresh = memo(function Fresh() {
           className="rounded-md min-h-80 flex-grow flex-shrink"
         />
         <div className="flex flex-col flex-grow-0 w-[400px]">
-          <p className="text-xl font-semibold">《战地风云5》</p>
-          <div className="grid grid-cols-2 gap-1 mt-6">
+          <p className="text-xl font-semibold pt-1 pb-2">《战地风云5》</p>
+          <div className="grid grid-cols-2 gap-1">
             <img
               className="rounded"
               src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_0569f81cafd8b18870d6d5bc296ad557f5576067.600x338.jpg"
