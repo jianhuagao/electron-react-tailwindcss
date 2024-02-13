@@ -51,42 +51,55 @@ export const TabComp = memo(function TabComp() {
 const Fresh = memo(function Fresh() {
   return (
     <div className="ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
-      <div className="flex gap-3">
-        <img
-          src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/capsule_616x353.jpg?t=1701356409"
-          alt=""
-          className="rounded-md min-h-80 flex-grow flex-shrink"
-        />
-        <div className="flex flex-col flex-grow-0 w-[400px]">
+      <div className="grid grid-cols-6 gap-2">
+        <div
+          className="col-span-4 row-span-3 rounded-lg"
+          style={{
+            backgroundImage:
+              'url(https://cdn.akamai.steamstatic.com/steam/apps/1238810/capsule_616x353.jpg?t=1701356409)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'top center',
+          }}
+        >
+          {/* <img
+            src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/capsule_616x353.jpg?t=1701356409"
+            alt=""
+            className="rounded-md min-h-80 flex-grow flex-shrink"
+          /> */}
+        </div>
+        <div className="flex flex-col col-span-2 row-span-3">
           <p className="text-xl font-semibold pt-1 pb-2">《战地风云5》</p>
           <div className="grid grid-cols-2 gap-1">
             <img
-              className="rounded"
+              className="rounded size-auto"
               src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_0569f81cafd8b18870d6d5bc296ad557f5576067.600x338.jpg"
               alt=""
             />
             <img
-              className="rounded"
+              className="rounded size-auto"
               src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_73a21e43ec44cac9aab41d122a284582d194d352.600x338.jpg"
               alt=""
             />
             <img
-              className="rounded"
+              className="rounded size-auto"
               src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_0c20c45d2e00feae5b9edfb6526662cc3c669164.600x338.jpg"
               alt=""
             />
             <img
-              className="rounded"
+              className="rounded size-auto"
               src="https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_d1952d018415b94bed85a503713a05ab12a407d6.600x338.jpg"
               alt=""
             />
           </div>
-          <div className="mt-auto text-sm">
+          <div className="text-sm mt-2">
             <strong className="text-[#a3cf06]">为您推荐</strong>
             ，因为您玩过标有以下标签的游戏：
             <div className="flex flex-wrap gap-1 text-xs mt-1">
               {['大逃杀', '第一人称射击游戏', '玩家对战'].map((tag) => (
-                <div className="rounded bg-gray-400/40 text-white/80 px-1 py-[2px]">
+                <div
+                  key={tag}
+                  className="rounded bg-gray-400/40 text-white/80 px-1 py-[2px]"
+                >
                   {tag}
                 </div>
               ))}
@@ -157,7 +170,7 @@ const Sales = memo(function Sales() {
             <img src={item.img} alt="" width={100} className="rounded-md" />
             <div>
               <h3 className="text-sm font-medium leading-5">{item.title}</h3>
-              <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
+              <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500 dark:text-gray-400">
                 <li>{item.time}</li>
                 <li>&middot;</li>
                 <li>{item.comments}</li>
