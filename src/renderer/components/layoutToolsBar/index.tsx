@@ -1,27 +1,55 @@
-import { memo } from 'react';
-import { ReactComponent as LeftIcon } from '../../../../assets/ui/chevron-left.svg';
-import { ReactComponent as RightIcon } from '../../../../assets/ui/chevron-right.svg';
-import { ReactComponent as ArrowIcon } from '../../../../assets/ui/arrow-path.svg';
-import { ReactComponent as SettingIcon } from '../../../../assets/ui/setting.svg';
-import { ReactComponent as InboxIcon } from '../../../../assets/ui/inbox.svg';
-import { ReactComponent as DarkIcon } from '../../../../assets/ui/moon.svg';
-// import { ReactComponent as ThemeIcon } from '../../../../assets/ui/sparkles.svg';
-import { ReactComponent as DownIcon } from '../../../../assets/ui/chevron-down.svg';
-import { ReactComponent as ComputerIcon } from '../../../../assets/ui/computer-desktop.svg';
-import { ReactComponent as SunIcon } from '../../../../assets/ui/sun.svg';
-import { useTheme } from '../../configs/ThemeProvider';
 import clsx from 'clsx';
+import { memo, useState } from 'react';
 import Drawer from '../headlessComponents/drawer';
 import Popover from '../headlessComponents/popover';
+import { useTheme } from '../../configs/ThemeProvider';
+
+import { ReactComponent as SunIcon } from '../../../../assets/ui/sun.svg';
+import { ReactComponent as DarkIcon } from '../../../../assets/ui/moon.svg';
+import { ReactComponent as InboxIcon } from '../../../../assets/ui/inbox.svg';
+import { ReactComponent as DivideIcon } from '../../../../assets/ui/divide.svg';
+import { ReactComponent as MinIcon } from '../../../../assets/ui/winMinLine.svg';
+import { ReactComponent as MaxIcon } from '../../../../assets/ui/winMaxLine.svg';
+import { ReactComponent as SettingIcon } from '../../../../assets/ui/setting.svg';
+import { ReactComponent as ArrowIcon } from '../../../../assets/ui/arrow-path.svg';
+import { ReactComponent as LeftIcon } from '../../../../assets/ui/chevron-left.svg';
+import { ReactComponent as DownIcon } from '../../../../assets/ui/chevron-down.svg';
+import { ReactComponent as CloseIcon } from '../../../../assets/ui/winCloseLine.svg';
+import { ReactComponent as RightIcon } from '../../../../assets/ui/chevron-right.svg';
+import { ReactComponent as RestoreIcon } from '../../../../assets/ui/winRestoreLine.svg';
+import { ReactComponent as ComputerIcon } from '../../../../assets/ui/computer-desktop.svg';
 
 const darkIconClassName =
   'cursor-pointer group-hover:mx-1 transition-all opacity-0 group-hover:opacity-100 duration-300 w-0 group-hover:w-[18px]';
 
 export default memo(function LayoutToolsBar() {
   const { theme, setTheme } = useTheme();
+  const [isMax, setIsMax] = useState(false);
+
+  //非mac系统
+  const isNotMacOs = window.osVersion !== 'darwin';
+
+  const handleMinimize = () => {
+    window.api.minimizeWindow();
+  };
+  const handleMaximize = () => {
+    window.api.maximizeWindow();
+  };
+  const handleClose = () => {
+    window.api.closeWindow();
+  };
+
+  window.api.maximize((value) => {
+    setIsMax(value);
+  });
 
   return (
-    <div className="flex items-center gap-5">
+    <div
+      className={clsx(
+        isNotMacOs && 'p-5 pb-0 region-drag',
+        'flex items-center gap-5',
+      )}
+    >
       <div className="cursor-pointer group">
         <LeftIcon className="w-[22px] group-hover:-translate-x-[2px] duration-300 transition-transform" />
       </div>
@@ -87,6 +115,35 @@ export default memo(function LayoutToolsBar() {
         title="Setting"
         icon={<SettingIcon className="w-[22px]" />}
       />
+      {/* windows 下需要显示最大化最小化关闭按钮 */}
+      {isNotMacOs && (
+        <>
+          <DivideIcon className="w-[20px] opacity-15" />
+          <div className="flex items-center gap-3">
+            <MinIcon
+              className="w-[22px] cursor-pointer"
+              onClick={handleMinimize}
+            />
+            {isMax ? (
+              <RestoreIcon
+                className="w-[22px] cursor-pointer"
+                onClick={handleMaximize}
+              />
+            ) : (
+              <MaxIcon
+                className="w-[22px] cursor-pointer"
+                onClick={handleMaximize}
+              />
+            )}
+
+            {/* <RestoreIcon className="w-[22px] cursor-pointer" /> */}
+            <CloseIcon
+              className="w-[22px] cursor-pointer"
+              onClick={handleClose}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 });

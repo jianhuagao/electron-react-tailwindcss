@@ -31,10 +31,14 @@ const electronHandler = {
 
 const osVersion = process.platform;
 
+// maximize unmaximize
+
 const api = {
   minimizeWindow: () => ipcRenderer.send('minimize-window'),
   maximizeWindow: () => ipcRenderer.send('maximize-window'),
   closeWindow: () => ipcRenderer.send('close-window'),
+  maximize: (callback: (value: boolean) => void) =>
+    ipcRenderer.on('mainWin-max', (_event, value) => callback(value)),
 };
 
 contextBridge.exposeInMainWorld('electron', electronHandler);

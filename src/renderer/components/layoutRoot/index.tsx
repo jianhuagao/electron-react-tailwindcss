@@ -7,6 +7,8 @@ import clsx from 'clsx';
 
 export default memo(function LayoutRoot() {
   const { isDark } = useTheme();
+  //mac系统
+  const isMacOs = window.osVersion === 'darwin';
   // blurImg
   return (
     <div
@@ -15,7 +17,7 @@ export default memo(function LayoutRoot() {
         'h-screen relative from-[#424676] select-none to-[#9276A5] via-[#676896] dark:bg-gradient-to-br',
       )}
     >
-      <TitleBar />
+      {isMacOs && <TitleBar />}
       <div className="flex gap-[6px] h-full">
         {/* 左边导航 */}
         <LayoutLeft />
