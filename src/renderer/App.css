@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/*滚动条的宽度a*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+  border-radius: 6px;
+  background: transparent;
+}
+
+/*滚动条的滑块*/
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #d5d5d5a1;
+  background-clip: content-box;
+  border: 1px solid transparent;
+}
+
+
 @layer {
   :root {
     --background: #f6f6f6;
