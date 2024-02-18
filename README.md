@@ -1,7 +1,5 @@
-<img src="./docs/images/page2.png" alt="page2"/>
-<img src="./docs/images/page1.png" alt="page1"/>
-<img src="./docs/images/page3.png" alt="page3"/>
 ## Tech Stack
+
 jianhuagao/electron-react-tailwindcss is built on the following main stack:
 
 - <img width='25' height='25' src='https://img.stackshare.io/service/830/jest.png' alt='Jest'/> [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
