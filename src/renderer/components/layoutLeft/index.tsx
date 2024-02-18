@@ -1,11 +1,11 @@
-import clsx from 'clsx';
 import { memo } from 'react';
+import clsx from 'clsx';
 import LayoutMenu from '../layoutMenu';
 import { ReactComponent as Logo } from '../../../../assets/logo.svg';
 
 export default memo(function LayoutLeft() {
-  //获取操作系统
-  const osVersion = window.osVersion;
+  // 获取操作系统
+  const { osVersion } = window;
 
   return (
     <div

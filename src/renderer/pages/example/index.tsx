@@ -11,15 +11,24 @@ export default memo(function Example() {
         <img src="https://picsum.photos/760/290" alt="" className="w-full" />
       </div>
       {[
-        <SettingIcon className="w-5" />,
-        <InboxIcon className="w-5" />,
-        <DarkIcon className="w-5" />,
-      ].map((Icon, i) => (
+        {
+          id: 1,
+          icon: <SettingIcon className="w-5" />,
+        },
+        {
+          id: 2,
+          icon: <InboxIcon className="w-5" />,
+        },
+        {
+          id: 3,
+          icon: <DarkIcon className="w-5" />,
+        },
+      ].map((item) => (
         <div
-          key={i}
+          key={item.id}
           className="rounded-lg col-span-4 gap-3 cursor-pointer dark:hover:bg-white/10 transition-all flex items-center justify-center h-16 dark:bg-white/20 bg-white/90 hover:bg-white/50"
         >
-          {Icon}
+          {item.icon}
           <p>Setting</p>
         </div>
       ))}

@@ -1,16 +1,16 @@
 import { Popover as UiPopover, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { ReactComponent as SettingSvg } from '../../../../../assets/ui/setting-solid.svg';
 import { ReactComponent as DownSvg } from '../../../../../assets/ui/chevron-down.svg';
 
 interface PopoverProps {
-  trigger?: React.ReactNode;
+  trigger: ReactNode;
 }
 
 export default function Popover({ trigger }: PopoverProps) {
   return (
     <UiPopover className="relative">
-      {({ open }) => (
+      {() => (
         <>
           <UiPopover.Button>{trigger}</UiPopover.Button>
           <Transition
@@ -45,9 +45,9 @@ export default function Popover({ trigger }: PopoverProps) {
                   </div>
                   <div className="p-2">
                     <ul>
-                      {['退出登录', '在线好友'].map((item, index) => (
+                      {['退出登录', '在线好友'].map((item) => (
                         <li
-                          key={index}
+                          key={item}
                           className="rounded hover:bg-white/50 dark:hover:bg-white/20 p-2 cursor-pointer"
                         >
                           {item}

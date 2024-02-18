@@ -1,13 +1,13 @@
 import { memo } from 'react';
+import clsx from 'clsx';
 import TitleBar from '../titleBar';
 import LayoutLeft from '../layoutLeft';
 import LayoutContent from '../layoutContent';
 import { useTheme } from '../../configs/ThemeProvider';
-import clsx from 'clsx';
 
 export default memo(function LayoutRoot() {
   const { isDark } = useTheme();
-  //mac系统
+  // mac系统
   const isMacOs = window.osVersion === 'darwin';
   // blurImg
   return (

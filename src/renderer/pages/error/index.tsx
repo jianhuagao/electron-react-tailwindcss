@@ -3,7 +3,6 @@ import { Link, useRouteError } from 'react-router-dom';
 
 export default memo(function Error() {
   const error: any = useRouteError();
-  console.error(error);
   return (
     <div className="flex items-center justify-center h-screen text-black">
       <div>

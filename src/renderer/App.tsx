@@ -1,25 +1,14 @@
 import './App.css';
-import { RouterProvider } from 'react-router-dom';
-import { routerConfig } from './configs/router';
-import { ThemeProvider, useTheme } from './configs/ThemeProvider';
-import { memo, useEffect } from 'react';
+import { ReactNode, memo, useEffect } from 'react';
 
-export default function App() {
-  return (
-    <>
-      <ThemeProvider defaultTheme="dark" storageKey="theme">
-        <TriggerTheme>
-          <RouterProvider router={routerConfig} />
-        </TriggerTheme>
-      </ThemeProvider>
-    </>
-  );
-}
+import { RouterProvider } from 'react-router-dom';
+import routerConfig from './configs/router';
+import { ThemeProvider, useTheme } from './configs/ThemeProvider';
 
 const TriggerTheme = memo(function TriggerTheme({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const { theme, setTheme } = useTheme();
 
@@ -32,10 +21,8 @@ const TriggerTheme = memo(function TriggerTheme({
     function handleDarkModeChange(e: any) {
       if (e.matches) {
         setTheme('systemDark');
-        console.log('dark');
       } else {
         setTheme('systemLight');
-        console.log('light');
       }
     }
 
@@ -48,3 +35,13 @@ const TriggerTheme = memo(function TriggerTheme({
 
   return children;
 });
+
+export default function App() {
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="theme">
+      <TriggerTheme>
+        <RouterProvider router={routerConfig} />
+      </TriggerTheme>
+    </ThemeProvider>
+  );
+}

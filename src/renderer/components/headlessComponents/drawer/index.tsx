@@ -1,35 +1,47 @@
+import {
+  Fragment,
+  ReactElement,
+  ReactNode,
+  cloneElement,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import React from 'react';
-import { Fragment, useMemo, useState } from 'react';
 
 interface DrawerProps {
-  trigger?: React.ReactElement;
-  title?: React.ReactNode;
-  icon?: React.ReactNode;
+  trigger: ReactElement;
+  title?: ReactNode;
+  icon?: ReactNode;
 }
 
-export default function Drawer({ trigger, title, icon }: DrawerProps) {
-  let [isOpen, setIsOpen] = useState(false);
+export default function Drawer({
+  trigger,
+  title = null,
+  icon = null,
+}: DrawerProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
+  const closeModal = useCallback(() => {
     setIsOpen(false);
-  }
+  }, []);
 
-  function openModal() {
+  const openModal = useCallback(() => {
     setIsOpen(true);
-  }
+  }, []);
 
   const triggerNode = useMemo(() => {
     if (trigger) {
       const { onClick } = trigger.props;
-      return React.cloneElement(trigger, {
-        onClick(event: React.MouseEvent) {
-          onClick && onClick(event);
+      return cloneElement(trigger, {
+        onClick(event: MouseEvent) {
+          onClick?.(event);
           openModal();
         },
       });
     }
-  }, [trigger]);
+    return null;
+  }, [trigger, openModal]);
 
   return (
     <>

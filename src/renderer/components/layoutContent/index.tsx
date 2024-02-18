@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import LayoutToolsBar from '../layoutToolsBar';
 
 export default memo(function LayoutContent() {
-  //mac系统
+  // mac系统
   const isMacOs = window.osVersion === 'darwin';
 
   return (

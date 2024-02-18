@@ -26,7 +26,7 @@ export default memo(function LayoutToolsBar() {
   const { theme, setTheme } = useTheme();
   const [isMax, setIsMax] = useState(false);
 
-  //非mac系统
+  // 非mac系统
   const isNotMacOs = window.osVersion !== 'darwin';
 
   const handleMinimize = () => {

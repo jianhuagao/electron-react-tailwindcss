@@ -9,12 +9,12 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 
+import { autoUpdater } from 'electron-updater';
+import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import path from 'path';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import { autoUpdater } from 'electron-updater';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
 
 class AppUpdater {
   constructor() {
@@ -32,13 +32,13 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
-//最小化窗口
+// 最小化窗口
 ipcMain.on('minimize-window', () => {
   if (mainWindow) {
     mainWindow.minimize();
   }
 });
-//最大化和还原窗口
+// 最大化和还原窗口
 ipcMain.on('maximize-window', () => {
   if (mainWindow) {
     if (mainWindow.isMaximized()) {
@@ -48,7 +48,7 @@ ipcMain.on('maximize-window', () => {
     }
   }
 });
-//关闭窗口
+// 关闭窗口
 ipcMain.on('close-window', () => {
   if (mainWindow) {
     mainWindow.close();
@@ -99,8 +99,8 @@ const createWindow = async () => {
     height: 728,
     minWidth: 896,
     minHeight: 609,
-    // frame: false, //设置为无边框
-    titleBarStyle: 'hidden', //隐藏标题栏
+    // frame: false, // 设置为无边框
+    titleBarStyle: 'hidden', // 隐藏标题栏
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
@@ -123,15 +123,15 @@ const createWindow = async () => {
     }
   });
 
-  //窗口大小改变
+  // 窗口大小改变
   mainWindow.on('maximize', () => {
-    //mac无需监听窗口大小变化
+    // mac无需监听窗口大小变化
     if (process.platform === 'darwin') return;
     mainWindow?.webContents.send('mainWin-max', true);
   });
 
   mainWindow.on('unmaximize', () => {
-    //mac无需监听窗口大小变化
+    // mac无需监听窗口大小变化
     if (process.platform === 'darwin') return;
     mainWindow?.webContents.send('mainWin-max', false);
   });

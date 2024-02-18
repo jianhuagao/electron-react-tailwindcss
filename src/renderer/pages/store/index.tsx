@@ -1,53 +1,8 @@
 import { memo } from 'react';
-
-export default memo(function Store() {
-  return (
-    <div className="pt-3">
-      <TabComp />
-    </div>
-  );
-});
-
-import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
+import { Tab } from '@headlessui/react';
 
-export const TabComp = memo(function TabComp() {
-  const tabItems = ['新鲜推荐', '销量', '类别', '点数商店', '新闻', '实验室'];
-
-  return (
-    <div className="w-full">
-      <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl bg-[#EEEEEE] dark:bg-blue-900/20 p-1">
-          {tabItems.map((itemName) => (
-            <Tab
-              key={itemName}
-              className={({ selected }) =>
-                clsx(
-                  'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
-                  selected
-                    ? 'bg-white dark:bg-white/30 text-blue-700/80 dark:text-blue-300 shadow'
-                    : 'dark:text-blue-100 text-[#3a4d5c] hover:bg-white/[0.12] dark:hover:text-white',
-                )
-              }
-            >
-              {itemName}
-            </Tab>
-          ))}
-        </Tab.List>
-        <Tab.Panels className="rounded-xl bg-white dark:bg-blue-900/10 p-4 mt-2">
-          <Tab.Panel key={0}>
-            <Fresh />
-          </Tab.Panel>
-          <Tab.Panel key={1}>
-            <Sales />
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
-    </div>
-  );
-});
-
-//新鲜推荐
+// 新鲜推荐
 const Fresh = memo(function Fresh() {
   return (
     <div className="ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
@@ -75,9 +30,9 @@ const Fresh = memo(function Fresh() {
               'https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_73a21e43ec44cac9aab41d122a284582d194d352.600x338.jpg',
               'https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_0c20c45d2e00feae5b9edfb6526662cc3c669164.600x338.jpg',
               'https://cdn.akamai.steamstatic.com/steam/apps/1238810/ss_d1952d018415b94bed85a503713a05ab12a407d6.600x338.jpg',
-            ].map((src, index) => (
+            ].map((src) => (
               <img
-                key={index}
+                key={src}
                 src={src}
                 alt=""
                 className="rounded size-auto cursor-pointer hover:shadow-lg"
@@ -113,7 +68,7 @@ const Fresh = memo(function Fresh() {
   );
 });
 
-//销量
+// 销量
 const Sales = memo(function Sales() {
   const data = [
     {
@@ -153,12 +108,12 @@ const Sales = memo(function Sales() {
     },
   ];
   return (
-    <div className="ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
+    <div className="ring-white/60 cursor-pointer ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
       <ul>
         {data.map((item) => (
           <li
             key={item.title}
-            className="relative rounded-md p-3 dark:hover:bg-gray-100/20 hover:bg-gray-100 flex gap-4"
+            className="relative rounded-md p-3 dark:hover:bg-gray-100/20 hover:bg-gray-100 flex gap-4 items-center"
           >
             <img src={item.img} alt="" width={100} className="rounded-md" />
             <div>
@@ -170,17 +125,54 @@ const Sales = memo(function Sales() {
                 <li>&middot;</li>
                 <li>{item.shares}</li>
               </ul>
-              <a
-                href="#"
-                className={clsx(
-                  'absolute inset-0 rounded-md',
-                  'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2',
-                )}
-              />
             </div>
           </li>
         ))}
       </ul>
+    </div>
+  );
+});
+
+const TabComp = memo(function TabComp() {
+  const tabItems = ['新鲜推荐', '销量', '类别', '点数商店', '新闻', '实验室'];
+
+  return (
+    <div className="w-full">
+      <Tab.Group>
+        <Tab.List className="flex space-x-1 rounded-xl bg-[#EEEEEE] dark:bg-blue-900/20 p-1">
+          {tabItems.map((itemName) => (
+            <Tab
+              key={itemName}
+              className={({ selected }) =>
+                clsx(
+                  'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
+                  selected
+                    ? 'bg-white dark:bg-white/30 text-blue-700/80 dark:text-blue-300 shadow'
+                    : 'dark:text-blue-100 text-[#3a4d5c] hover:bg-white/[0.12] dark:hover:text-white',
+                )
+              }
+            >
+              {itemName}
+            </Tab>
+          ))}
+        </Tab.List>
+        <Tab.Panels className="rounded-xl bg-white dark:bg-blue-900/10 p-4 mt-2">
+          <Tab.Panel key={0}>
+            <Fresh />
+          </Tab.Panel>
+          <Tab.Panel key={1}>
+            <Sales />
+          </Tab.Panel>
+        </Tab.Panels>
+      </Tab.Group>
+    </div>
+  );
+});
+
+export default memo(function Store() {
+  return (
+    <div className="pt-3">
+      <TabComp />
     </div>
   );
 });
