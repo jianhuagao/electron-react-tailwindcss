@@ -2,24 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/*滚动条的宽度a*/
-::-webkit-scrollbar {
-  width: 8px;
-  height: 10px;
-  border-radius: 6px;
-  background: transparent;
-}
-
-/*滚动条的滑块*/
-::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  background-color: #d5d5d5a1;
-  background-clip: content-box;
-  border: 1px solid transparent;
-}
-
-
 @layer {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    border-radius: 6px;
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #d5d5d5a1;
+    background-clip: content-box;
+    border: 1px solid transparent;
+  }
+
   :root {
     --background: #f6f6f6;
     --foreground: #09090b;
@@ -43,26 +40,31 @@
   }
 }
 
-.blurImg{
-  background-image: url("../../assets/ui/cyan-blur.png"), url("../../assets/ui/red-blur.png");
-  background-repeat: no-repeat, no-repeat;
-  background-position: right top, left bottom;
-  background-size: 50%, 50%;
+@layer components {
+  .blurImg{
+    background-image: url("../../assets/ui/cyan-blur.png"), url("../../assets/ui/red-blur.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: right top, left bottom;
+    background-size: 50%, 50%;
+  }
+
+  .blurImg-tr{
+    background-image: url("../../assets/ui/cyan-blur.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 50%;
+  }
 }
 
-.blurImg-tr{
-  background-image: url("../../assets/ui/cyan-blur.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: 50%;
+@layer utilities {
+  .region-drag{
+    -webkit-app-region: drag;
+  }
+  .region-no-drag{
+    -webkit-app-region: no-drag;
+  }
+  .region-drag * {
+    -webkit-app-region: no-drag;
+  }
 }
 
-.region-drag{
-  -webkit-app-region: drag;
-}
-.region-no-drag{
-  -webkit-app-region: no-drag;
-}
-.region-drag * {
-  -webkit-app-region: no-drag;
-}
