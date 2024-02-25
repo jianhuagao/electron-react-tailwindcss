@@ -16,13 +16,11 @@ const MenuItem = memo(function MenuItem({ icon, title, path }: MenuItemProps) {
   const { pathname } = useLocation();
   const isCheck = pathname.startsWith(path);
   return (
-    <li
-      className={clsx(
+    <li className='p-1'>
+      <Link to={path} className={clsx(
         isCheck && 'bg-gray-300/20',
-        'rounded text-sm px-2 py-2 mb-1 last:mb-0 dark:text-white/80 text-black/80 cursor-pointer hover:bg-gray-300/40 transition-all',
-      )}
-    >
-      <Link to={path} className="flex items-center gap-2">
+        'rounded text-sm px-2 py-2 flex z-10 items-center gap-2 dark:text-white/80 text-black/80 cursor-pointer hover:bg-gray-300/40 transition-all',
+      )}>
         {icon}
         {title}
       </Link>
